@@ -1,9 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using MaXiaoMing.Questions.Answers;
+using MaXiaoMing.Questions.Questions;
+using MaXiaoMing.Questions.Subjects;
+using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
 using Volo.Abp.BackgroundJobs.EntityFrameworkCore;
 using Volo.Abp.Data;
 using Volo.Abp.DependencyInjection;
 using Volo.Abp.EntityFrameworkCore;
+using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.FeatureManagement.EntityFrameworkCore;
 using Volo.Abp.Identity;
 using Volo.Abp.Identity.EntityFrameworkCore;
@@ -24,6 +28,9 @@ public class QuestionsDbContext :
     ITenantManagementDbContext
 {
     /* Add DbSet properties for your Aggregate Roots / Entities here. */
+    public DbSet<Subject> Subjects { get; set; }
+    public DbSet<Question> Questions { get; set; }
+    public DbSet<Answer> Answers { get; set; }
 
     #region Entities from the modules
 
@@ -75,11 +82,26 @@ public class QuestionsDbContext :
 
         /* Configure your own tables/entities inside here */
 
-        //builder.Entity<YourEntity>(b =>
-        //{
-        //    b.ToTable(QuestionsConsts.DbTablePrefix + "YourEntities", QuestionsConsts.DbSchema);
-        //    b.ConfigureByConvention(); //auto configure for the base class props
-        //    //...
-        //});
+        builder.Entity<Subject>(e =>
+        {
+            e.ToTable(QuestionsConsts.DbTablePrefix + "Subjects");
+            e.ConfigureByConvention();
+            e.Property(x => x.Name).HasMaxLength(SubjectConsts.MaxSubjectNameLength);
+        });
+
+        builder.Entity<Question>(e =>
+        {
+            e.ToTable(QuestionsConsts.DbTablePrefix + "Questions");
+            e.ConfigureByConvention();
+            e.Property(x => x.QuestionAnswer).HasMaxLength(QuestionConsts.MaxQuestionAnswerLength);
+            e.Property(x => x.QuestionDescription).HasMaxLength(QuestionConsts.MaxQuestionDescriptionLength);
+        });
+
+        builder.Entity<Answer>(e =>
+        {
+            e.ToTable(QuestionsConsts.DbTablePrefix + "Answers");
+            e.ConfigureByConvention();
+            e.Property(x => x.YourAnswer).HasMaxLength(AnswerConsts.MaxYourAnswerLength);
+        });
     }
 }

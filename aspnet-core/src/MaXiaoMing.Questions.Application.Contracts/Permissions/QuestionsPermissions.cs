@@ -2,8 +2,14 @@
 
 public static class QuestionsPermissions
 {
-    public const string GroupName = "Questions";
+    public const string GroupName = "码小明题库";
 
-    //Add your own permission names. Example:
-    //public const string MyPermission1 = GroupName + ".MyPermission1";
+    public static class Subjects
+    {
+        public const string Default = GroupName + ".科目";
+        public const string 查询 = Default + "查询";
+        public const string 编辑 = Default + "编辑";
+        public const string 删除 = Default + "删除";
+        public const string 创建 = Default + "创建";
+    }
 }

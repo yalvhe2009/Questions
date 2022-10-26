@@ -15,6 +15,19 @@ function configureRoutes(routesService: RoutesService) {
         order: 1,
         layout: eLayoutType.application,
       },
+      {
+        path: '/question',
+        name: '题库',
+        iconClass: 'fa fa-block-question',
+        order: 2,
+        layout: eLayoutType.application
+      },
+      {
+        path: '/subjects',
+        name: '科目',
+        parentName: '题库',
+        layout: eLayoutType.application
+      }
     ]);
   };
 }

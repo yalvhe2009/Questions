@@ -25,6 +25,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('@abp/ng.setting-management').then(m => m.SettingManagementModule.forLazy()),
   },
+  { path: 'subjects', loadChildren: () => import('./subject/subject.module').then(m => m.SubjectModule) },
 ];
 
 @NgModule({

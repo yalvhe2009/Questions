@@ -18,13 +18,19 @@ function configureRoutes(routesService: RoutesService) {
       {
         path: '/question',
         name: '题库',
-        iconClass: 'fa fa-block-question',
+        iconClass: 'fa fa-book',
         order: 2,
         layout: eLayoutType.application
       },
       {
         path: '/subjects',
         name: '科目',
+        parentName: '题库',
+        layout: eLayoutType.application
+      },
+      {
+        path: '/questions',
+        name: '题目',
         parentName: '题库',
         layout: eLayoutType.application
       }

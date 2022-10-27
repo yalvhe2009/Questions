@@ -6,6 +6,7 @@ export const APP_ROUTE_PROVIDER = [
 ];
 
 function configureRoutes(routesService: RoutesService) {
+  
   return () => {
     routesService.add([
       {
@@ -16,23 +17,18 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.application,
       },
       {
-        path: '/question',
-        name: '题库',
-        iconClass: 'fa fa-book',
-        order: 2,
-        layout: eLayoutType.application
-      },
-      {
         path: '/subjects',
         name: '科目',
-        parentName: '题库',
-        layout: eLayoutType.application
+        layout: eLayoutType.application,
+        requiredPolicy: '码小明题库.科目',
+        iconClass: 'fa fa-book',
       },
       {
         path: '/questions',
         name: '题目',
-        parentName: '题库',
-        layout: eLayoutType.application
+        layout: eLayoutType.application,
+        requiredPolicy: '码小明题库.题目',
+        iconClass: 'fa fa-life-ring',
       }
     ]);
   };

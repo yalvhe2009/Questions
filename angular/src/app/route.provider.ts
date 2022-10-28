@@ -15,6 +15,13 @@ function configureRoutes(routesService: RoutesService) {
         order: 1,
         layout: eLayoutType.application,
       },
+      {
+        path: '/subjects',
+        name: '科目',
+        layout: eLayoutType.application,
+        requiredPolicy: '码小明题库.科目',
+        iconClass: 'fa fa-book'
+      }
     ]);
   };
 }

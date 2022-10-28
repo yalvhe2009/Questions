@@ -1,7 +1,7 @@
 using System;
 using Volo.Abp.Application.Dtos;
 
-namespace MaXiaoMing.Questions.Questions;
+namespace MaXiaoMing.Questions.Questions.Dto;
 
 public class QuestionDto: FullAuditedEntityDto<Guid>
 {

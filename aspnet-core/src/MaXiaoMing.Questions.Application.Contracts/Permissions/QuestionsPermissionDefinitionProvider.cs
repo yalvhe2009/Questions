@@ -14,6 +14,12 @@ public class QuestionsPermissionDefinitionProvider : PermissionDefinitionProvide
         科目.AddChild(QuestionsPermissions.Subjects.删除, new FixedLocalizableString("删除"));
         科目.AddChild(QuestionsPermissions.Subjects.查询, new FixedLocalizableString("查询"));
         科目.AddChild(QuestionsPermissions.Subjects.编辑, new FixedLocalizableString("编辑"));
+        
+        var 题目 = 码小明题库.AddPermission(QuestionsPermissions.Questions.Default, new FixedLocalizableString("题目"));
+        题目.AddChild(QuestionsPermissions.Questions.创建, new FixedLocalizableString("创建"));
+        题目.AddChild(QuestionsPermissions.Questions.删除, new FixedLocalizableString("删除"));
+        题目.AddChild(QuestionsPermissions.Questions.查询, new FixedLocalizableString("查询"));
+        题目.AddChild(QuestionsPermissions.Questions.编辑, new FixedLocalizableString("编辑"));
 
     }
 

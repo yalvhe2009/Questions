@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using MaXiaoMing.Questions.Answers;
 using MaXiaoMing.Questions.Questions;
 using MaXiaoMing.Questions.Subjects;
 
@@ -20,5 +21,8 @@ public class QuestionsApplicationAutoMapperProfile : Profile
         //问题
         CreateMap<Question, QuestionDto>();
         CreateMap<CreateUpdateQuestionDto, Question>();
+        
+        //回答
+        // CreateMap<CreateAnswerDto, Answer>();
     }
 }

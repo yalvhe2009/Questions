@@ -21,7 +21,14 @@ function configureRoutes(routesService: RoutesService) {
         layout: eLayoutType.application,
         requiredPolicy: '码小明题库.科目',
         iconClass: 'fa fa-book'
-      }
+      },
+      {
+        path: '/questions',
+        name: '题目',
+        layout: eLayoutType.application,
+        requiredPolicy: '码小明题库.题目',
+        iconClass: 'fa fa-life-ring'
+      },
     ]);
   };
 }

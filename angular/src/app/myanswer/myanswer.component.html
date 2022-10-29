@@ -1,0 +1,47 @@
+
+<div class="container">
+    <div class="row">
+        <div class="col col-md-3">
+            <label for="subjectId">请选择一个科目:</label>
+            <select id="subjectId" class="form-select" [(ngModel)]="getMyAnswerInput.subjectId">
+                <option value="" selected>--请选择一个科目--</option>
+                <option *ngFor="let subject of subject.items" [value]="subject.id">{{subject.name}}</option>
+            </select>
+        </div>
+        <div class="col col-md-3">
+            <label for="questionDescription">问题描述关键字:</label>
+            <input type="text" id="questionDescription" class="form-control" [(ngModel)]="getMyAnswerInput.filter">
+        </div>
+
+        <div class="col col-md-3">
+            <label for="startDate">答题时间起:</label>
+            <input id="startDate" class="form-control" type="date" [(ngModel)]="getMyAnswerInput.createTimeFrom" />
+        </div>
+
+        <div class="col col-md-3">
+            <label for="endDate">答题时间止:</label>
+            <input id="endDate" class="form-control" type="date" [(ngModel)]="getMyAnswerInput.createTimeTo" />
+        </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;" (click)="onSearchMyAnswers()">
+        <button class="btn btn-primary">搜索</button>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <ngx-datatable
+            [rows]="myAnswer.items"
+            [count]="myAnswer.totalCount"
+            [list]="list" default>
+            <ngx-datatable-column [name]="'科目'" prop="subjectName"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'问题描述'" prop="questionDescription"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'问题答案'" prop="questionAnswer"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'您的回答'" prop="yourAnswer"></ngx-datatable-column>
+            <ngx-datatable-column [name]="'答题时间'" prop="creationTime">
+                <ng-template let-row="row" ngx-datatable-cell-template>
+                    {{ row.creationTime | date:'yyyy-MM-dd HH:mm:ss' }}
+                </ng-template>
+            </ngx-datatable-column>
+        </ngx-datatable>
+    </div>
+</div>

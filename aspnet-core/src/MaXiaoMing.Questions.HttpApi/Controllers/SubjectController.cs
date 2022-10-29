@@ -27,6 +27,13 @@ public class SubjectController: AbpControllerBase, ISubjectAppService
         return await _subjectAppService.GetListAsync(input);
     }
 
+    [HttpGet]
+    [Route("all")]
+    public async Task<ListResultDto<SubjectDto>> GetAllListAsync()
+    {
+        return await _subjectAppService.GetAllListAsync();
+    }
+
     [HttpPost]
     public async Task CreateAsync(CreateUpdateSubjectDto input)
     {

@@ -34,6 +34,18 @@ public class SubjectAppService: QuestionsAppService, ISubjectAppService
         var subjectDtos = ObjectMapper.Map<List<Subject>, List<SubjectDto>>(subjects);
         return new PagedResultDto<SubjectDto>(count, subjectDtos);
     }
+    
+    [Authorize(QuestionsPermissions.Subjects.查询)]
+    public async Task<ListResultDto<SubjectDto>> GetAllListAsync()
+    {
+        var queryable = await _subjectRepository.GetQueryableAsync();
+        queryable = queryable
+            .OrderBy(nameof(Subject.CreationTime) + " DESC");
+        var subjects = await AsyncExecuter.ToListAsync(queryable);
+
+        var subjectDtos = ObjectMapper.Map<List<Subject>, List<SubjectDto>>(subjects);
+        return new ListResultDto<SubjectDto>(subjectDtos);
+    }
 
     [Authorize(QuestionsPermissions.Subjects.创建)]
     public async Task CreateAsync(CreateUpdateSubjectDto input)

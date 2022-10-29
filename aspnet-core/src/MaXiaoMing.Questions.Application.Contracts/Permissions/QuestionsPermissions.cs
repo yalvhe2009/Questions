@@ -21,4 +21,9 @@ public static class QuestionsPermissions
         public const string 删除 = Default + ".删除";
         public const string 创建 = Default + ".创建";
     }
+    
+    public static class Answers
+    {
+        public const string Default = GroupName + ".答题";
+    }
 }

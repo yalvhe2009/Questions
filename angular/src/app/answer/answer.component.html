@@ -1,0 +1,72 @@
+<div class="container-fluid">
+
+    <div *ngIf="isShowStartBtnLayer">
+
+        <select class="form-select" (change)="onSelectSubject($event.target.value)">
+            <option value="" selected>--请选择一个科目,以开始答题--</option>
+            <option *ngFor="let subject of subject.items" [value]="subject.id">{{subject.name}}</option>
+        </select>
+
+        <div style="display: flex;justify-content: center; align-items: center; width: 100%; margin-top: 60px;">
+            <button type="button" class="btn btn-primary" (click)="startAnswering()" [disabled]="isStartAnsweringBtnDisable">开始</button>
+        </div>
+    </div>
+
+    <div *ngIf="isShowAnswerLayer">
+        <div class="row">
+            <div class="col col-md-2">
+                <span>{{currentDoingIndex}}</span> / <span>{{unDoQuestions.items.length}}</span>
+            </div>
+            <div class="col col-md-10">
+                <div style="display: flex; justify-content: center;">
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onClickBack()">返回</button>
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onClickPre()" [disabled]="currentDoingIndex === 1">上一题</button>
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onClickNext()" [disabled]="currentDoingIndex === unDoQuestions.items.length">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-t-20">
+            <span>问题描述: {{unDoQuestions.items[currentDoingIndex - 1].questionDescription}}</span>
+        </div>
+
+        <div class="row m-t-20">
+            <label for="your-answer" class="form-label">请输入您的答案: </label>
+            <textarea class="form-control" id="your-answer" rows="5" (change)="onYourAnswerChange($event.target.value)" [value]="yourAnswers[this.currentDoingIndex - 1].yourAnswer"></textarea>
+        </div>
+
+        <div class="row m-t-20" *ngIf="currentDoingIndex === unDoQuestions.items.length">
+            <button class="btn btn-primary" (click)="onClickSubmit()">交卷</button>
+        </div>
+    </div>
+
+    <div *ngIf="isShowAnalysisLayer">
+        <div class="row">
+            <div class="col col-md-2">
+                <span>{{currentDoingIndex}}</span> / <span>{{unDoQuestions.items.length}}</span>
+            </div>
+            <div class="col col-md-10">
+                <div style="display: flex; justify-content: center;">
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onAnalysisClickBack()">返回</button>
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onClickPre()" [disabled]="currentDoingIndex === 1">上一题</button>
+                    <button type="button" class="btn btn-secondary m-x-20" (click)="onClickNext()" [disabled]="currentDoingIndex === unDoQuestions.items.length">下一题</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="row m-t-20">
+            <span>问题描述: {{analysis.items[currentDoingIndex - 1].questionDescription}}</span>
+        </div>
+
+        <div class="row m-t-20">
+            <span style="color: green;">正确答案: {{analysis.items[currentDoingIndex - 1].questionAnswer}}</span>
+        </div>
+
+        <div class="row m-t-20">
+            <span style="color: pink;">您的答案: {{analysis.items[currentDoingIndex - 1].yourAnswer}}</span>
+        </div>
+
+    </div>
+
+    
+</div>

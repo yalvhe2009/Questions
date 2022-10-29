@@ -9,6 +9,8 @@ public interface ISubjectAppService: IApplicationService
 {
     Task<PagedResultDto<SubjectDto>> GetListAsync(PagedAndSortedResultRequestDto input);
 
+    Task<ListResultDto<SubjectDto>> GetAllListAsync();
+
     Task CreateAsync(CreateUpdateSubjectDto input);
 
     Task<SubjectDto> GetAsync(Guid id);

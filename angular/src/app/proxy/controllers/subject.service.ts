@@ -1,5 +1,5 @@
 import { RestService } from '@abp/ng.core';
-import type { PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
+import type { ListResultDto, PagedAndSortedResultRequestDto, PagedResultDto } from '@abp/ng.core';
 import { Injectable } from '@angular/core';
 import type { CreateUpdateSubjectDto, SubjectDto } from '../subjects/models';
 
@@ -36,11 +36,19 @@ export class SubjectService {
     { apiName: this.apiName });
   
 
+  getAllList = () =>
+    this.restService.request<any, ListResultDto<SubjectDto>>({
+      method: 'GET',
+      url: '/api/subjects/all',
+    },
+    { apiName: this.apiName });
+  
+
   getList = (input: PagedAndSortedResultRequestDto) =>
     this.restService.request<any, PagedResultDto<SubjectDto>>({
       method: 'GET',
       url: '/api/subjects',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { skipCount: input.skipCount, maxResultCount: input.maxResultCount, sorting: input.sorting },
     },
     { apiName: this.apiName });
   

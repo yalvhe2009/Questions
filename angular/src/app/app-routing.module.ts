@@ -27,6 +27,7 @@ const routes: Routes = [
   },
   { path: 'subjects', loadChildren: () => import('./subject/subject.module').then(m => m.SubjectModule) },
   { path: 'questions', loadChildren: () => import('./question/question.module').then(m => m.QuestionModule) },
+  { path: 'answers', loadChildren: () => import('./answer/answer.module').then(m => m.AnswerModule) },
 ];
 
 @NgModule({

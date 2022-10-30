@@ -40,7 +40,7 @@ export class SubjectService {
     this.restService.request<any, PagedResultDto<SubjectDto>>({
       method: 'GET',
       url: '/api/subjects',
-      params: { sorting: input.sorting, skipCount: input.skipCount, maxResultCount: input.maxResultCount },
+      params: { skipCount: input.skipCount, maxResultCount: input.maxResultCount, sorting: input.sorting },
     },
     { apiName: this.apiName });
   

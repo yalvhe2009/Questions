@@ -22,5 +22,9 @@ public static class QuestionsPermissions
         public const string 创建 = Default + ".创建";
     }
 
+    public static class Answers
+    {
+        public const string Default = GroupName + ".答题";
+    }
     
 }

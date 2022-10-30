@@ -5,6 +5,14 @@ namespace MaXiaoMing.Questions.Answers;
 
 public class AnswerDto: FullAuditedEntityDto<Guid>
 {
+    public Guid SubjectId { get; set; }
+
+    public string SubjectName { get; set; }
+
+    public string QuestionDescription { get; set; }
+
+    public string QuestionAnswer { get; set; }
+    
     /// <summary>
     /// 问题表的Id
     /// </summary>

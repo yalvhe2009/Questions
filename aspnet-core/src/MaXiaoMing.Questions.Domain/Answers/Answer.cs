@@ -18,8 +18,9 @@ public class Answer: FullAuditedAggregateRoot<Guid>
     /// </summary>
     public string YourAnswer { get; set; }
 
-    public Answer(Guid questionId, string yourAnswer)
+    public Answer(Guid id, Guid questionId, string yourAnswer)
     {
+        Id = id;
         QuestionId = questionId;
         YourAnswer = yourAnswer;
     }

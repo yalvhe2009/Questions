@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="row">
+        <div class="col col-md-3">
+            <label for="subjectId">请选择一个科目</label>
+            <select id="subjectId" [(ngModel)]="getMyAnswerInput.subjectId" class="form-select">
+                <option value="" selected>--请选择一个科目--</option>
+                <option *ngFor="let subject of subject.items" [value]="subject.id">{{subject.name}}</option>
+            </select>
+        </div>
+
+        <div class="col col-md-3">
+            <label for="questionDescription">问题描述关键字:</label>
+            <input type="text" id="questionDescription" class="form-control" [(ngModel)]="getMyAnswerInput.filter">
+        </div>
+
+        <div class="col col-md-3">
+            <label for="createTimeFrom">答题时间起:</label>
+            <input type="date" id="createTimeFrom" class="form-control" [(ngModel)]="getMyAnswerInput.createTimeFrom">
+        </div>
+
+        <div class="col col-md-3">
+            <label for="createTimeTo">答题时间至:</label>
+            <input type="date" id="createTimeTo" class="form-control" [(ngModel)]="getMyAnswerInput.createTimeTo">
+        </div>
+    </div>
+
+    <div class="row">
+        <button class="btn btn-primary" (click)="onSearchMyAnswers()">搜索</button>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+        <ngx-datatable
+            [rows]="myAnswer.items"
+            [count]="myAnswer.totalCount"
+            [list]="list" default
+        >
+        <ngx-datatable-column [name]="'科目'" prop="subjectName"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'问题描述'" prop="questionDescription"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'问题答案'" prop="questionAnswer"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'您的回答'" prop="yourAnswer"></ngx-datatable-column>
+        <ngx-datatable-column [name]="'答题时间'" prop="creationTime">
+            <<ng-template let-row="row" ngx-datatable-cell-template>
+                {{row.creationTime | date: 'yyyy-MM-dd HH:mm:ss'}}
+            </ng-template>
+            
+        </ngx-datatable-column>
+    </ngx-datatable>
+    </div>
+</div>

@@ -22,6 +22,7 @@ public class QuestionsPermissionDefinitionProvider : PermissionDefinitionProvide
         题目.AddChild(QuestionsPermissions.Questions.编辑, new FixedLocalizableString("编辑"));
 
         var 答题 = 码小明题库.AddPermission(QuestionsPermissions.Answers.Default, new FixedLocalizableString("答题"));
+        var 我的已答 = 码小明题库.AddPermission(QuestionsPermissions.MyAnswers.Default, new FixedLocalizableString("我的已答"));
     }
 
     private static LocalizableString L(string name)

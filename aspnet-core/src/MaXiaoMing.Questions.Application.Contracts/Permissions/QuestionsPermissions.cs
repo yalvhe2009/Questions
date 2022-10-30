@@ -27,4 +27,8 @@ public static class QuestionsPermissions
         public const string Default = GroupName + ".答题";
     }
     
+    public static class MyAnswers
+    {
+        public const string Default = GroupName + ".我的已答";
+    }
 }
